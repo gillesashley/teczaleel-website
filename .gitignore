@@ -1,0 +1,47 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyc
+
+# Django
+*.log
+db.sqlite3
+
+# Visual Studio Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Virtual environment
+venv/
+env/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.swp
+*.swo
+
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Static files
+staticfiles/
+
+# Media files
+media/
+
+# Ignore local settings
+local_settings.py
+
+# Ignore secret key
+*.key
+
+# Ignore database configuration
+database.yml
