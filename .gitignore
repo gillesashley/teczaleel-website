@@ -2,7 +2,6 @@
 *.pyc
 *.pyo
 __pycache__/
-*.pyc
 
 # Django
 *.log
@@ -25,11 +24,6 @@ Thumbs.db
 # Temporary files
 *.swp
 *.swo
-
-# Python bytecode
-*.pyc
-*.pyo
-__pycache__/
 
 # Static files
 staticfiles/
