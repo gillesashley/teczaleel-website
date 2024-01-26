@@ -28,6 +28,9 @@ jobs:
     - name: Run migrations
       run: |
         python manage.py migrate
+    - name: Collect static files
+      run: |
+        python manage.py collectstatic --noinput
     - name: Run Tests
       run: |
         python manage.py test
