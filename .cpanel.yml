@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/teczalee/repositories/teczaleel-website  # Replace with your project path
+    - /bin/sh -c "cd $DEPLOYPATH && git pull origin main"  # Pull latest code from GitHub
+    - /bin/sh -c "cd $DEPLOYPATH && python manage.py migrate"  # Apply database migrations
+    - /bin/sh -c "cd $DEPLOYPATH && python manage.py collectstatic --noinput"  # Collect static files
+    - /bin/sh -c "supervisorctl restart django_app"  # Restart your Django app process (if applicable)
