@@ -39,3 +39,6 @@ local_settings.py
 
 # Ignore database configuration
 database.yml
+
+docker-compose.yml
+Dockerfile
