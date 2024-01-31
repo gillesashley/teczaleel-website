@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # Local apps
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
-    'companies.apps.CompaniesConfig',
+    'company.apps.CompanyConfig',
 ]
 
 MIDDLEWARE = [
