@@ -19,7 +19,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 # No inlines needed for ProjectAdmin:
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['name', 'company', 'status', 'progress_percent']  # Add useful fields
+    list_display = ['name', 'company', 'status', 'progress_percent', 'project_coordinator']  # Add useful fields
 
 
 class ProjectCoordinatorAdmin(admin.ModelAdmin):

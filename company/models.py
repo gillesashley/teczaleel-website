@@ -53,7 +53,30 @@ class Project(Base):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     status = models.IntegerField(choices=PROJECT_STATUS_CHOICES, default=1)
     progress_percent = models.IntegerField(choices=PROGRESS_PERCENT_CHOICES, null=True, default=0)
-    project_coordinator = models.ManyToManyField(ProjectCoordinator, blank=True)
+    project_coordinator = models.ForeignKey(ProjectCoordinator, on_delete=models.CASCADE, blank=True, null=True, )
 
     def __str__(self):
         return self.name
+
+    def get_status_display_value(self):
+        return dict(Project.PROJECT_STATUS_CHOICES)[self.status]
+
+
+class Sprint(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Comment(models.Model):
+    sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Comment by {self.company} on {self.sprint}'

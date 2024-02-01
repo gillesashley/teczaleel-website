@@ -54,13 +54,18 @@
     <div class="layer"></div>
     <!-- end layer -->
 </div>
-{% include 'layout/inc/navbar.html' %}
-{% include 'layout/inc/header.html' %}
+{% block nav_header %}
+    {% include 'layout/inc/navbar.html' %}
+    {% include 'layout/inc/header.html' %}
+{% endblock nav_header %}
 <main>
     {% block content %}
         <h1>Base Layout</h1>
     {% endblock content %}
-    {% include 'layout/inc/footer.html' %}
+
+    {% block footer %}
+        {% include 'layout/inc/footer.html' %}
+    {% endblock footer %}
     <audio id="link" src="{% static 'pages/audio/link.mp3' %}" preload="auto"></audio>
 </main>
 
