@@ -32,39 +32,6 @@
                 </p>
             </div>
         </div>
-
-        <h2 class="mt-4 mb-3">Sprints</h2>
-        {% for sprint in project.sprint_set.all %}
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ sprint.title }}</h5>
-                    <p class="card-text">{{ sprint.description }}</p>
-
-                    <!-- Display comments for the sprint -->
-                    <h6 class="mt-3 mb-2">Comments:</h6>
-                    {% for comment in sprint.comment_set.all %}
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text">{{ comment.text }}</p>
-                                <small class="text-muted">Comment by {{ comment.company }}
-                                    on {{ comment.date_added }}</small>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                    <!-- Add a form for companies to add comments -->
-                    <form method="post" action="{% url 'add_comment' sprint.id %}">
-                        {% csrf_token %}
-                        <div class="form-group mt-3">
-                            <label for="commentText">Add a Comment:</label>
-                            <textarea class="form-control" id="commentText" name="text" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit Comment</button>
-                    </form>
-                </div>
-            </div>
-        {% endfor %}
-
     {% endfor %}
 </main>
 

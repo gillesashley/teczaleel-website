@@ -1,25 +1,42 @@
 from django.contrib import admin
+from .models import Company, Project, ProjectCoordinator, Sprint, Comment
 
-from .models import Company, Project, ProjectCoordinator
 
-
-# Manage coordinators inline with companies:
 class ProjectCoordinatorInline(admin.TabularInline):
     model = ProjectCoordinator
 
 
+class SprintInline(admin.TabularInline):
+    model = Sprint
+
+
+class CommentInline(admin.TabularInline):
+    model = Comment
+
+
 class ProjectInline(admin.TabularInline):
     model = Project
+    inlines = [SprintInline]  # Add Sprint inline to Project
 
 
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ['name', 'address']
-    inlines = [ProjectInline, ProjectCoordinatorInline]  # Add coordinator inline
+    inlines = [ProjectInline, ProjectCoordinatorInline]
 
 
-# No inlines needed for ProjectAdmin:
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['name', 'company', 'status', 'progress_percent', 'project_coordinator']  # Add useful fields
+    list_display = ['name', 'company', 'status', 'progress_percent', 'project_coordinator']
+    inlines = [SprintInline]  # Add Sprint inline to Project
+    search_fields = ['name', 'company__name']  # Enable searching by project name and company name
+
+
+class SprintAdmin(admin.ModelAdmin):
+    list_display = ['title', 'project', 'created', 'updated']
+    inlines = [CommentInline]  # Add Comment inline to Sprint
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['text', 'sprint', 'company', 'created', 'updated']
 
 
 class ProjectCoordinatorAdmin(admin.ModelAdmin):
@@ -29,4 +46,6 @@ class ProjectCoordinatorAdmin(admin.ModelAdmin):
 # Register models with admin:
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(ProjectCoordinator, ProjectCoordinatorAdmin)  # Keep separate registration
+admin.site.register(ProjectCoordinator, ProjectCoordinatorAdmin)
+admin.site.register(Sprint, SprintAdmin)
+admin.site.register(Comment, CommentAdmin)

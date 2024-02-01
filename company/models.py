@@ -1,7 +1,8 @@
 from django.db import models
+from django.conf import settings
 
 
-class Base(models.Model):
+class BaseModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -9,11 +10,12 @@ class Base(models.Model):
         abstract = True
 
 
-class Company(Base):
+class Company(BaseModel):
     name = models.CharField('Company Name', max_length=100)
     address = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Company"
@@ -23,7 +25,7 @@ class Company(Base):
         return self.name
 
 
-class ProjectCoordinator(Base):
+class ProjectCoordinator(BaseModel):
     name = models.CharField("Project Coordinator", max_length=100)
     position = models.CharField(max_length=100)
     email = models.EmailField()
@@ -33,7 +35,7 @@ class ProjectCoordinator(Base):
         return self.name
 
 
-class Project(Base):
+class Project(BaseModel):
     PROJECT_STATUS_CHOICES = (
         (1, 'In Progress'),
         (2, 'Complete'),
@@ -62,21 +64,19 @@ class Project(Base):
         return dict(Project.PROJECT_STATUS_CHOICES)[self.status]
 
 
-class Sprint(models.Model):
+class Sprint(BaseModel):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
 
 
-class Comment(models.Model):
+class Comment(BaseModel):
     sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     text = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'Comment by {self.company} on {self.sprint}'

@@ -37,11 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    # 3rd party apps
+    'crispy_forms',
+    'crispy_bootstrap5',
     # Local apps
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,3 +140,6 @@ JAZZMIN_SETTINGS = {
     'welcome_sign': 'Teczaleel',
     'copyright': 'Teczaleel',
 }
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
