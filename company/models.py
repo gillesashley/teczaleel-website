@@ -85,10 +85,6 @@ class Comment(BaseModel):
         return f'Comment by {self.company} on {self.sprint}'
 
 
-from django.db import models
-from company.models import Company
-
-
 class CompanyUser(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
