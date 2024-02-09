@@ -83,3 +83,26 @@ class Comment(BaseModel):
 
     def __str__(self):
         return f'Comment by {self.company} on {self.sprint}'
+
+
+from django.db import models
+from company.models import Company
+
+
+class CompanyUser(models.Model):
+    user = models.ForeignKey(
+        "auth.User",
+        on_delete=models.CASCADE,
+        related_name="company_users",
+    )
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.CASCADE,
+        related_name="company_users",
+    )
+
+    # Add additional fields specific to the user's role within the company,
+    # such as position, department, etc.
+
+    def __str__(self):
+        return f"{self.user.username} - {self.company.name}"
