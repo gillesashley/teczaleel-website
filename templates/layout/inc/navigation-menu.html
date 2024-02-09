@@ -24,9 +24,15 @@
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Teams</a></li>
                     <li><a href="#">FAQ</a></li>
+                    <li>
+                        <a href="{% url 'pages:blog' %}">Blog</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:contact' %}">Contact</a>
+                    </li>
                 </ul>
             </li>
-             <li>
+            <li>
                 <a href="{% url 'pages:products' %}">PRODUCTS</a>
             </li>
             <li>
@@ -39,12 +45,6 @@
                     <li><a href="#">Strategy</a></li>
                     <li><a href="#">Brands Communication Management</a></li>
                 </ul>
-            </li>
-            <li>
-                <a href="{% url 'pages:blog' %}">BLOG</a>
-            </li>
-            <li>
-                <a href="{% url 'pages:contact' %}">CONTACT</a>
             </li>
             {% if user.is_authenticated %}
                 <li>
