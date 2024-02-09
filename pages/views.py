@@ -13,5 +13,9 @@ class ContactPageView(TemplateView):
     template_name = 'pages/contact.html'
 
 
-class WorksPageView(TemplateView):
-    template_name = 'pages/works.html'
+class CaseStudyView(TemplateView):
+    template_name = 'pages/case_study.html'
+
+
+class ProductsPageView(TemplateView):
+    template_name = 'pages/products.html'

@@ -289,7 +289,7 @@ a {
   position: absolute;
   left: 0;
   top: 0;
-  background: #f03a37;
+  background: #2280ec;
   transition-delay: 0.8s;
 }
 .navigation-menu .inner {
@@ -734,7 +734,7 @@ a {
   content: "";
   width: 60%;
   height: 20px;
-  background: #f03a37;
+  background: #7043b2;
   position: absolute;
   right: 0;
   top: 0;
@@ -744,7 +744,7 @@ a {
   content: "";
   width: 60%;
   height: 70px;
-  background: #f03a37;
+  background: #7043b2;
   position: absolute;
   left: 40px;
   bottom: 0;
@@ -1134,7 +1134,7 @@ main {
   content: "";
   width: 0;
   height: 6px;
-  background: #00bbcc;
+  background: #7043b2;
   position: absolute;
   left: 0;
   bottom: 2px;
@@ -1169,7 +1169,7 @@ main {
   color: #fff;
   display: block;
   font-weight: 800;
-  margin-bottom: 2s0px;
+  margin-bottom: 250px;
 }
 .page-header .inner-content .inner h6 {
   font-size: 20px;
@@ -1270,7 +1270,7 @@ main {
 .works .works-grid li figure figcaption span {
   width: 3px;
   height: 50px;
-  background: #f03a37;
+  background: #7043b2;
   position: absolute;
   left: 20px;
   top: -80%;
@@ -1384,7 +1384,7 @@ main {
   content: "";
   width: 6px;
   height: 6px;
-  background: #f03a37;
+  background: #7043b2;
   position: absolute;
   left: 50%;
   bottom: 0;

@@ -12,6 +12,7 @@ class SprintInline(admin.TabularInline):
 
 class CommentInline(admin.TabularInline):
     model = Comment
+    extra = 0
 
 
 class ProjectInline(admin.TabularInline):
@@ -31,7 +32,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class SprintAdmin(admin.ModelAdmin):
-    list_display = ['title', 'project', 'created', 'updated']
+    list_display = ['title', 'project', 'start_date', 'end_date', 'created', 'updated']
     inlines = [CommentInline]  # Add Comment inline to Sprint
 
 
@@ -40,7 +41,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class ProjectCoordinatorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'position', 'company']
+    list_display = ['name', 'position', 'email', 'phone_number', 'company']
 
 
 # Register models with admin:

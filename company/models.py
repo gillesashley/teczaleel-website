@@ -15,7 +15,7 @@ class Company(BaseModel):
     address = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=100)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='companies')
 
     class Meta:
         verbose_name = "Company"
@@ -29,6 +29,7 @@ class ProjectCoordinator(BaseModel):
     name = models.CharField("Project Coordinator", max_length=100)
     position = models.CharField(max_length=100)
     email = models.EmailField()
+    phone_number = models.CharField(max_length=100)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -68,6 +69,8 @@ class Sprint(BaseModel):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     def __str__(self):
         return self.title
@@ -75,7 +78,7 @@ class Sprint(BaseModel):
 
 class Comment(BaseModel):
     sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, default=1)
     text = models.TextField()
 
     def __str__(self):
