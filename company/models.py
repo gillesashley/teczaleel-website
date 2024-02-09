@@ -91,7 +91,7 @@ from company.models import Company
 
 class CompanyUser(models.Model):
     user = models.ForeignKey(
-        "auth.User",
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="company_users",
     )
