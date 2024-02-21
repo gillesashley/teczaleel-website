@@ -47,3 +47,7 @@ class TrackProjectView(LoginRequiredMixin, ListView):
             context['form'] = form
             return render(self, self.template_name, context)
 
+
+class StartProjectView(ListView):
+    model = Project
+    template_name = 'company/start-a-project.html'

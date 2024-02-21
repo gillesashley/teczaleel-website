@@ -46,15 +46,9 @@
                     <li><a href="#">Brands Communication Management</a></li>
                 </ul>
             </li>
-            {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'logout' %}">LOGOUT</a>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{% url 'login' %}">LOGIN</a>
-                </li>
-            {% endif %}
+            <li>
+                <a class="btn btn-primary" href="{% url 'company:start-project' %}">START A PROJECT</a>
+            </li>
         </ul>
     </div>
     <!-- end inner -->
