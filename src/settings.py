@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     # Local apps
-    'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
 ]

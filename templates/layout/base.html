@@ -1,85 +1,20 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="author" content="Themezinho">
-    <meta name="description" content="Verno | Creative Showcases for Agencies">
-    <meta name="keywords"
-          content="creative, works, showcase, portfolio, highlight, projects, modern, agency, digital, studio, css, animation, transition, freelancers">
-
-    <!-- SOCIAL MEDIA META -->
-    <meta property="og:description" content="Verno | Creative Showcases for Agencies">
-    <meta property="og:image" content="http://www.themezinho.net/verno/preview.png">
-    <meta property="og:site_name" content="verno">
-    <meta property="og:title" content="verno">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://www.themezinho.net/verno">
-
-    <!-- TWITTER META -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@verno">
-    <meta name="twitter:creator" content="@verno">
-    <meta name="twitter:title" content="verno">
-    <meta name="twitter:description" content="Verno | Creative Showcases for Agencies">
-    <meta name="twitter:image" content="http://www.themezinho.net/verno/preview.png">
-
-    <!-- FAVICON FILES -->
-    <link href="{% static 'pages/ico/apple-touch-icon-144-precomposed.png' %}" rel="apple-touch-icon" sizes="144x144">
-    <link href="{% static 'pages/ico/apple-touch-icon-114-precomposed.png' %}" rel="apple-touch-icon" sizes="114x114">
-    <link href="{% static 'pages/ico/apple-touch-icon-72-precomposed.png' %}" rel="apple-touch-icon" sizes="72x72">
-    <link href="{% static 'pages/ico/apple-touch-icon-57-precomposed.png' %}" rel="apple-touch-icon">
-    <link href="{% static 'pages/ico/favicon.png' %}" rel="shortcut icon">
-
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="{% static 'pages/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/css/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/css/fancybox.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/css/odometer.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/css/swiper.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<div class="preloader">
-    <div class="layer"></div>
-    <div class="inner">
-        <figure><img src="{% static 'pages/images/loading.gif' %}" alt="Image"></figure>
-        <span class="typewriter" id="typewriter"></span></div>
-    <!-- end inner -->
-</div>
-{% include 'layout/inc/navigation-menu.html' %}
-<div class="transition-overlay">
-    <div class="layer"></div>
-    <!-- end layer -->
-</div>
-{% block nav_header %}
-    {% include 'layout/inc/navbar.html' %}
-    {% include 'layout/inc/header.html' %}
-{% endblock nav_header %}
-<main>
+<main class="container mt-5">
     {% block content %}
-        <h1>Base Layout</h1>
+        <h1>Base Page</h1>
     {% endblock content %}
-
-    {% block footer %}
-        {% include 'layout/inc/footer.html' %}
-    {% endblock footer %}
-    <audio id="link" src="{% static 'pages/audio/link.mp3' %}" preload="auto"></audio>
 </main>
 
-
-<script src="{% static 'pages/js/jquery.min.js' %}"></script>
-<script src="{% static 'pages/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'pages/js/swiper.min.js' %}"></script>
-<script src="{% static 'pages/js/jquery.stellar.js' %}"></script>
-<script src="{% static 'pages/js/isotope.min.js' %}"></script>
-<script src="{% static 'pages/js/imagesloaded.pkgd.min.js' %}"></script>
-<script src="{% static 'pages/js/jquery.typewriter.js' %}"></script>
-<script src="{% static 'pages/js/odometer.min.js' %}"></script>
-<script src="{% static 'pages/js/fancybox.min.js' %}"></script>
-<script src="{% static 'pages/js/wow.min.js' %}"></script>
-<script src="{% static 'pages/js/scripts.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
