@@ -1,9 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
 from django.views.generic import ListView
 
 from .forms import CommentForm
-from .models import Project, Sprint
+from .models import Project
 
 
 class TrackProjectView(LoginRequiredMixin, ListView):

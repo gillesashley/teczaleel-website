@@ -15,7 +15,7 @@ class Company(BaseModel):
     address = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=100)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='companies')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Company"
@@ -78,7 +78,7 @@ class Sprint(BaseModel):
 
 class Comment(BaseModel):
     sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, default=1)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
     text = models.TextField()
 
     def __str__(self):
@@ -100,5 +100,5 @@ class CompanyUser(models.Model):
     # Add additional fields specific to the user's role within the company,
     # such as position, department, etc.
 
-    def __str__(self):
-        return f"{self.user.username} - {self.company.name}"
+    # def __str__(self):
+    #     return f"{self.user.username} - {self.company.name}"

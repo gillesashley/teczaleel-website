@@ -3,52 +3,55 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    {% for project in project_list %}
-        <h1 class="text-center mb-5 mt-4 font-weight-bold">PROJECT DETAILS: {{ project.name }}</h1>
-        <div class="card mb-5">
-            <div class="card-body">
-                <h2 class="card-title mb-4">Project Name: {{ project.name }}</h2>
-                <h5 class="card-subtitle mb-3 text-muted font-weight-light">Company: {{ project.company }}</h5>
-                <p class="card-text">Coordinator: {{ project.project_coordinator }}</p>
+    {% if project_list %}
+        {% for project in project_list %}
+            <h1 class="text-center mb-5 mt-4 font-weight-bold">PROJECT DETAILS: {{ project.name }}</h1>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Project Name: {{ project.name }}</h2>
+                    <h5 class="card-subtitle mb-3 text-muted font-weight-light">Company: {{ project.company }}</h5>
+                    <p class="card-text">Coordinator: {{ project.project_coordinator }}</p>
 
-                <div class="progress mb-5">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                         style="width: {{ project.progress_percent }}%;"
-                         aria-valuenow="{{ project.progress_percent }}" aria-valuemin="0"
-                         aria-valuemax="100">{{ project.progress_percent }}%
+                    <div class="progress mb-5">
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                             style="width: {{ project.progress_percent }}%;"
+                             aria-valuenow="{{ project.progress_percent }}" aria-valuemin="0"
+                             aria-valuemax="100">{{ project.progress_percent }}%
+                        </div>
                     </div>
+
+                    <p class="card-text">Status:
+                        <span class="badge bg-danger">{{ project.get_status_display_value }}</span>
+                    </p>
+                    <hr>
+                    <h3>Sprints</h3>
+                    <ul>
+                        {% for sprint in project.sprints.all %}
+                            <li>
+                                <h4>{{ sprint.title }}</h4>
+                                {{ sprint.description }}
+
+                                <h5>Comments</h5>
+
+                                <ul class="comments list-unstyled ml-4">
+                                    {% for comment in sprint.comment_set.all %}
+                                        <li class="border p-3">{{ comment.text }}</li>
+                                    {% endfor %}
+                                </ul>
+
+                                <form method="post" class="text-center">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <input type="hidden" name="sprint" value="{{ sprint.id }}">
+                                    <button type="submit" class="btn btn-success btn-lg">Submit Comment</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-
-                <p class="card-text">Status:
-                    <span class="badge bg-danger">{{ project.get_status_display_value }}</span>
-                </p>
-                <hr>
-                <h3>Sprints</h3>
-                <ul>
-                    {% for sprint in project.sprints.all %}
-                        <li>
-                            <h4>{{ sprint.title }}</h4>
-                            {{ sprint.description }}
-
-                            <h5>Comments</h5>
-
-                            <ul class="comments list-unstyled ml-4">
-                                {% for comment in sprint.comment_set.all %}
-                                    <li class="border p-3">{{ comment.text }}</li>
-                                {% endfor %}
-                            </ul>
-
-                            <form method="post" class="text-center">
-                                {% csrf_token %}
-                                {{ form|crispy }}
-                                <input type="hidden" name="sprint" value="{{ sprint.id }}">
-                                <button type="submit" class="btn btn-success btn-lg">Submit Comment</button>
-                            </form>
-
-                        </li>
-                    {% endfor %}
-                </ul>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        <h1>No Projects yet</h1>
+    {% endif %}
 {% endblock content %}
